@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Cellulare>
+
+<script>
+	function LogOut(){
+		//Sessione finita
+		document.location.replace("./Login") //verificare come fare redirect con Javascript
+	}
+</script>
+<table class="table">
+	<tr>
+		<th>
+			@Html.DisplayNameFor(item => item.Vendor)
+		</th>
+		<th>
+			@Html.DisplayNameFor(item => item.Model)
+		</th>
+		<th></th>
+	</tr>
+
+	@foreach (var item in Model)
+	{
+			<tr>
+				<td>
+				@Html.DisplayFor(modelItem => item.Vendor)
+				</td>
+				<td>
+				@Html.DisplayFor(modelItem => item.Model)
+				</td>
+				<td>
+					<input type="submit" value="Acquista" onclick="LogOut()" />
+				</td>
+			</tr>
+	}
+</table>
+
+

@@ -1,0 +1,20 @@
+﻿@model Utente
+
+@using (Html.BeginForm())
+{
+		<h2>Login Utente</h2>
+		<div>
+		@Html.LabelFor(user=>user.Username)
+			<div>
+			@Html.EditorFor(user => user.Username)
+			</div>
+		</div>
+		<div>
+		@Html.LabelFor(user=>user.Password)
+			<div>
+			@Html.EditorFor(user => user.Password)
+			</div>
+		</div>
+		<input type="submit" value="Login" />
+}
+

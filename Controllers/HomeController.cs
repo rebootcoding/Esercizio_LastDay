@@ -13,20 +13,41 @@ namespace Esercizio_LastDay.Controllers
 			_logger = logger;
 		}
 
-		public IActionResult Index()
+		public IActionResult Login()
 		{
 			return View();
 		}
 
-		public IActionResult Privacy()
+		[HttpPost]
+		public IActionResult Login(string Username, string Password)
 		{
-			return View();
+			if (Manager.Login(Username, Password)){
+				return RedirectToAction("ListaProdotti");
+			}
+			else
+			{
+				return RedirectToAction("Login");
+			}
 		}
+
+		public IActionResult ListaProdotti()
+		{
+			return View(Manager.GetPhones());
+		}
+
+		[HttpPost]
+		public IActionResult ListaProdotti(Cellulare c)
+		{
+			return View("AcquistoConfermato");
+		}
+
+
 
 		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
 		public IActionResult Error()
 		{
 			return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
 		}
+
 	}
 }
